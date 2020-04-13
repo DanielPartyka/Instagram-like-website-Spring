@@ -17,7 +17,7 @@ public class Photos {
     private Sections sections;
     private Date date;
 
-    @OneToMany(mappedBy = "photo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "photos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comments> comments;
 
     public Photos () {

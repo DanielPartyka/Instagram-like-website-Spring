@@ -15,7 +15,7 @@ public class PortalspolecznosciowyApplication {
 		SpringApplication.run(PortalspolecznosciowyApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner instagramexample(UserRepository userRepository, PhotosRepository photosRepository) {
+	public CommandLineRunner instagramexample(UserRepository userRepository) {
 		return args -> {
 			User user = new User("Galan","Daniel","Partyka","dp@wp.pl","12345");
 			userRepository.save(user);
