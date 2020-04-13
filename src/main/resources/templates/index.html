@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="https://cdn.jsdelivr.net/npm/bulma@0.8.1/bulma.sass">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+<section class="section">
+    <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png"
+                     alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+            </a>
+            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://bulma.io/">
+                    Home
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+                        Opcje
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+                            Overview
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
+                            Modifiers
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
+                            Columns
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
+                            Layout
+                        </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
+                            Form
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                            Elements
+                        </a>
+                        <a class="navbar-item is-active"
+                           href="https://bulma.io/documentation/components/breadcrumb/">
+                            Components
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
+                               data-social-target="https://bulma.io" target="_blank"
+                               href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+
+                                    <span>
+                                        Rejestracja
+                                    </span>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-primary"
+                               href="https://github.com/jgthms/bulma/releases/download/0.8.0/bulma-0.8.0.zip">
+
+                                <span>Logowanie</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section class="section">
+
+
+    <div class="columns">
+        <div class="column is-two-thirds">
+
+            <div class="columns is-mobile">
+
+                <div class="column is-10 is-offset-1">
+                    <div class="field has-addons">
+                        <input class="input" type="text" placeholder="Szukaj po tagach, lub nazwach użytkowników">
+                        <button class="button is-primary">Szukaj</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="columns is-mobile">
+                <div class="column is-10 is-offset-1">
+                    <div class="container">
+                        <div class="notification">
+                            <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-64x64">
+                                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Johnys</strong> <small>John Smith</small>
+                                            <br>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare
+                                            magna
+                                            eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem.
+                                            Etiam
+                                            finibus odio quis feugiat facilisis.
+                                        </p>
+                                    </div>
+                                    <nav class="level is-mobile">
+                                        <div class="level-left">
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="media-right">
+                                    <button class="button is-link">Obserwuj</button>
+                                </div>
+                            </article>
+                            <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-64x64">
+                                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Johnys</strong> <small>John Smith</small>
+                                            <br>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare
+                                            magna
+                                            eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem.
+                                            Etiam
+                                            finibus odio quis feugiat facilisis.
+                                        </p>
+                                    </div>
+                                    <nav class="level is-mobile">
+                                        <div class="level-left">
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="media-right">
+                                    <button class="button is-link">Obserwuj</button>
+                                </div>
+                            </article>
+                            <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-64x64">
+                                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Johnys</strong> <small>John Smith</small>
+                                            <br>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare
+                                            magna
+                                            eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem.
+                                            Etiam
+                                            finibus odio quis feugiat facilisis.
+                                        </p>
+                                    </div>
+                                    <nav class="level is-mobile">
+                                        <div class="level-left">
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                            </a>
+                                            <a class="level-item">
+                                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="media-right">
+                                    <button class="button is-link">Obserwuj</button>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="columns">
+                <div class="column">
+                    <p class="title is-4 is-spaced">Wyróżnione prace dla ciebie</p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png"
+                                     alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                             alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">John Smith</p>
+                                    <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png"
+                                     alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                             alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">John Smith</p>
+                                    <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Website created</strong> by <a href="https://jgthms.com">Daniel Partyka</a>
+            </p>
+        </div>
+    </footer>
+</section>
+</body>
+
+</html>
