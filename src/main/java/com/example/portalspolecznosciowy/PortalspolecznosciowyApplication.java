@@ -1,7 +1,6 @@
 package com.example.portalspolecznosciowy;
 
 import com.example.portalspolecznosciowy.models.User;
-import com.example.portalspolecznosciowy.repositories.PhotosRepository;
 import com.example.portalspolecznosciowy.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
