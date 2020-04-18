@@ -32,6 +32,14 @@ public class Photos {
         this.date = date;
     }
 
+    public Set<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comments> comments) {
+        this.comments = comments;
+    }
+
     public Long getPhoto_id() {
         return photo_id;
     }

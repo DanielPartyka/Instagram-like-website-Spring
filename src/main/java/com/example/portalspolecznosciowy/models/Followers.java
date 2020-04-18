@@ -21,6 +21,7 @@ public class Followers {
         this.follower_id = follower_id;
     }
 
+
     public Long getId() {
         return id;
     }

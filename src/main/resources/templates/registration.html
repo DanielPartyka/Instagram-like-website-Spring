@@ -105,6 +105,7 @@
     <div class="box">
         <div class="columns">
             <div class="column is-8 is-offset-2">
+                <form th:action="@{/registration}" th:object="${user}" method="post">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Imię</label>
@@ -112,7 +113,7 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="text" placeholder="imię">
+                                <input class="input" type="text" placeholder="imię" name="name" id="name">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -128,7 +129,8 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="text" placeholder="nazwisko">
+                                <input class="input" type="text" placeholder="surname" name="surname"
+                                id="surname">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-circle"></i>
                                     </span>
@@ -144,7 +146,7 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="email">
+                                <input class="input" type="email" placeholder="email" name="email" id="email">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
                                     </span>
@@ -155,6 +157,21 @@
                         </div>
                     </div>
                 </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Hasło</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control is-expanded has-icons-left has-icons-right">
+                                    <input class="input" type="password" placeholder="hasło" name="password" id="password">
+                                    <span class="icon is-small is-left">
+                                       <i class="fas fa-lock"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -166,15 +183,15 @@
                         <div class="field is-narrow">
                             <div class="control">
                                 <label class="radio">
-                                    <input type="radio" name="member">
+                                    <input type="radio" name="sex" id="sex" value="mężczyzna">
                                     Mężczyzna
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="member">
+                                    <input type="radio" name="sex" id="sex2" value="kobieta">
                                     Kobieta
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="member">
+                                    <input type="radio" name="sex" id="sex3" value="inne">
                                     Inna
                                 </label>
                             </div>
@@ -189,7 +206,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Nickname">
+                                <input class="input" type="text" placeholder="Nickname" name="nickname" id="nickname">
                             </div>
 
                         </div>
@@ -203,8 +220,8 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                    <textarea class="textarea"
-                                              placeholder="Opisz swoje zainteresowania, cele itd"></textarea>
+                                    <input class="textarea" type="textarea" name="description" id="description"
+                                              placeholder="Opisz swoje zainteresowania, cele itd">
                             </div>
                         </div>
                     </div>
@@ -231,7 +248,9 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
+
         </div>
     </div>
     </div>

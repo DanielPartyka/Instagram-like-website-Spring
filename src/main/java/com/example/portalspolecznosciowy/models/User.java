@@ -10,10 +10,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nickname;
+    private String image_src;
     private String name;
     private String surname;
     private String email;
     private String password;
+    private String sex;
+    private String description;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Followers> followers;
@@ -25,12 +28,64 @@ public class User {
     public User() {
     }
 
-    public User(String nickname, String name, String surname, String email, String password) {
+    public User(String nickname, String image_src, String name, String surname, String email, String password, String sex, String description) {
         this.nickname = nickname;
+        this.image_src = image_src;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.sex = sex;
+        this.description = description;
+
+    }
+
+    public String getImage_src() {
+        return image_src;
+    }
+
+    public void setImage_src(String image_src) {
+        this.image_src = image_src;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Followers> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<Followers> followers) {
+        this.followers = followers;
+    }
+
+    public Set<Photos> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<Photos> photos) {
+        this.photos = photos;
+    }
+
+    public Set<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comments> comments) {
+        this.comments = comments;
     }
 
     public Long getId() {

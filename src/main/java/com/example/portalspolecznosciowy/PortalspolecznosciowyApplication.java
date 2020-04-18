@@ -16,8 +16,7 @@ public class PortalspolecznosciowyApplication {
 	@Bean
 	public CommandLineRunner instagramexample(UserRepository userRepository) {
 		return args -> {
-			User user = new User("Galan","Daniel","Partyka","dp@wp.pl","12345");
-			userRepository.save(user);
+
 		};
 	}
 }

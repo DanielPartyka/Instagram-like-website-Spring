@@ -11,17 +11,6 @@ public class portalspolecznosciowyController {
     {
         return "index";
     }
-    @GetMapping("/registration")
-    public String registrationrender()
-    {
-        return "registration";
-    }
-
-    @GetMapping("/login")
-    public String loginrender()
-    {
-        return "login";
-    }
 
     @GetMapping("/user")
     public String userrender()
