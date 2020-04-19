@@ -108,6 +108,7 @@
         <div class="columns">
 
             <div class="column is-8 is-offset-2">
+                <form th:action="@{/login}" th:object="${user}" method="post">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Email</label>
@@ -115,7 +116,7 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="text" placeholder="Email">
+                                <input class="input" type="text" placeholder="Email" name="email" id="email">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -131,7 +132,7 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="password" placeholder="hasło">
+                                <input class="input" type="password" placeholder="hasło" name="password" id="password">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-user-circle"></i>
                                     </span>
@@ -142,15 +143,27 @@
                 </div>
 
 
+
                 <div class="field is-horizontal">
                     <div class="field-label">
                         <!-- Left empty for spacing -->
                     </div>
                     <div class="field-body">
+                        <div class="field" th:if="${login}">
+                            <article class="message is-danger">
+                                <div class="message-header">
+                                    <p>Błąd</p>
+                                    <button class="delete" aria-label="delete"></button>
+                                </div>
+                                <div class="message-body">
+                                    Użytkownik o podanym emailu lub nickname'u już istnieje!
+                                </div>
+                            </article>
+                        </div>
                         <div class="field">
                             <div class="columns">
                                 <div class="column is-10">
-                                    <button class="button is-right is-success">
+                                    <button type="submit" class="button is-right is-success">
                                         Zaloguj się
                                     </button>
                                 </div>
@@ -163,6 +176,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

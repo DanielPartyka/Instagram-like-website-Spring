@@ -21,17 +21,22 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    UserDetailsService userDetailsService;
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 
+        auth.userDetailsService(userDetailsService);
+
+        /*
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select email,password, enabled from users where username=?")
+                        "select email,password, enabled from users where email=?")
                 .authoritiesByUsernameQuery(
                         "select email, password from users where email=?");
+        */
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
