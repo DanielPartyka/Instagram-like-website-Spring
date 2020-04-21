@@ -18,6 +18,7 @@ public class User {
     private String password;
     private String sex;
     private String description;
+    private String ROLE = "USER";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Followers> followers;
@@ -29,7 +30,7 @@ public class User {
     public User() {
     }
 
-    public User(String nickname, String image_src, String name, String surname, String email, String password, String sex, String description) {
+    public User(String nickname, String image_src, String name, String surname, String email, String password, String sex, String description, String rOLE) {
         this.nickname = nickname;
         this.image_src = image_src;
         this.name = name;
@@ -38,7 +39,16 @@ public class User {
         this.password = password;
         this.sex = sex;
         this.description = description;
+        ROLE = rOLE;
 
+    }
+
+    public String getROLE() {
+        return ROLE;
+    }
+
+    public void setROLE(String ROLE) {
+        ROLE = ROLE;
     }
 
     public String getImage_src() {

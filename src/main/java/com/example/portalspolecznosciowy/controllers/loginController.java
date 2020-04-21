@@ -20,6 +20,7 @@ public class loginController {
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
+    /*
     @PostMapping("/login")
     public ModelAndView loginintoservice(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView("index");
@@ -34,5 +35,5 @@ public class loginController {
         }
         return modelAndView;
     }
-
+    */
 }
