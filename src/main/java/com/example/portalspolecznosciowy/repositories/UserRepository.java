@@ -19,6 +19,6 @@ public interface UserRepository extends CrudRepository<User,Long> {
     @Query(value = "select * from user where email =?1", nativeQuery = true)
     User findIdByEmail(String email);
 
-    @Query(value = "Select Count(p.photo_id) from photos p, user u where u.id = p.user_id and id=?1", nativeQuery = true)
-    User findHowManyPhotos(User user);
+    @Query(value = "Select Count(p.photo_id) from photos p, user u where u.id = p.user_id and user_id=?1", nativeQuery = true)
+    User findHowManyPhotos(long id);
 }

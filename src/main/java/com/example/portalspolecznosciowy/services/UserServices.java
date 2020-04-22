@@ -3,7 +3,6 @@ package com.example.portalspolecznosciowy.services;
 import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,9 +24,9 @@ public class UserServices {
         User user = userRepository.findIdByEmail(email);
         return user;
     }
-    public User howManyPhotos(User user) {
-        User u = userRepository.findHowManyPhotos(user);
-        return u;
+    public User howManyPhotos(Long id) {
+        User user = userRepository.findHowManyPhotos(id);
+        return user;
     }
 
     public List<User> proponowaniUzytkownicy() {

@@ -22,7 +22,8 @@ public class userController {
         ModelAndView modelAndView = new ModelAndView("user");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         uzytkownik = authentication.getName();
-        modelAndView.addObject("howmanyphotos",userServices.howManyPhotos(userServices.findUserId(uzytkownik)));
+        userServices.findUserId(uzytkownik);
+        modelAndView.addObject("howmanyphotos",userServices.howManyPhotos(Integer.parseInt()));
         return modelAndView;
     }
 }
