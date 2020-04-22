@@ -47,7 +47,7 @@ public class photoController {
         photos.setSections(sectionsServices.findSectionByName(sections.getName()));
         photos.setTags(photos.getTags());
         photos.setDescription(photos.getDescription());
-        photos.setName_Photo(photos.getName_Photo());
+        photos.setName_photo(photos.getName_photo());
         Date today = new Date();
         photos.setDate(today);
         photosRepository.save(photos);

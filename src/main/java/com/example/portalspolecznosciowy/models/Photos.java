@@ -17,38 +17,27 @@ public class Photos {
     private Sections sections;
     private String name_photo;
     private Date date;
+    private String tags;
+    private String description;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @OneToMany(mappedBy = "photos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comments> comments;
-
-    public String getName_Photo() {
-        return name_photo;
-    }
-
-    public void setName_Photo(String name_photo) {
-        this.name_photo = name_photo;
-    }
-
-    public Photos () {
-
-    }
-
-    public Photos (User user, Sections sections, String tags, String description, Date date, String name_photo) {
-        this.user = user;
-        this.sections = sections;
-        this.tags = tags;
-        this.description = description;
-        this.date = date;
-        this.name_photo = name_photo;
-    }
-
-    public Set<Comments> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comments> comments) {
-        this.comments = comments;
-    }
 
     public Long getPhoto_id() {
         return photo_id;
@@ -56,14 +45,6 @@ public class Photos {
 
     public void setPhoto_id(Long photo_id) {
         this.photo_id = photo_id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public User getUser() {
@@ -82,23 +63,43 @@ public class Photos {
         this.sections = sections;
     }
 
-    public String getTags() {
-        return tags;
+    public String getName_photo() {
+        return name_photo;
     }
 
-    public void setTags(String tags) {
+    public void setName_photo(String name_photo) {
+        this.name_photo = name_photo;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Set<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comments> comments) {
+        this.comments = comments;
+    }
+
+    public Photos () {
+
+    }
+
+    public Photos (User user, Sections sections, String tags, String description, Date date, String name_photo) {
+        this.user = user;
+        this.sections = sections;
         this.tags = tags;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
+        this.date = date;
+        this.name_photo = name_photo;
     }
 
-    private String tags;
-    private String description;
+
 
 }

@@ -20,20 +20,4 @@ public class loginController {
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
-    /*
-    @PostMapping("/login")
-    public ModelAndView loginintoservice(@ModelAttribute("user") User user) {
-        ModelAndView modelAndView = new ModelAndView("index");
-
-        if (userServices.checklogincredentials(user.getEmail(),user.getPassword()))
-        {
-            return modelAndView;
-        }
-        else {
-            modelAndView.addObject("login",true);
-            modelAndView.setViewName("login");
-        }
-        return modelAndView;
-    }
-    */
 }

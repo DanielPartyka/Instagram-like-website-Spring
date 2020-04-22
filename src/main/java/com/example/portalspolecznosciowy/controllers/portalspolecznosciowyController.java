@@ -22,10 +22,5 @@ public class portalspolecznosciowyController {
         return modelAndView;
     }
 
-    @GetMapping("/user")
-    public String userrender()
-    {
-        return "user";
-    }
 }
 

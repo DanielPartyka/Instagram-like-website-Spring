@@ -25,14 +25,11 @@ public class UserServices {
         User user = userRepository.findIdByEmail(email);
         return user;
     }
-    /*
-    public boolean checklogincredentials(String email, String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = userRepository.findByEmailAndPassword(email,encoder.encode(password));
-        if (user == null) return true;
-        else return false;
+    public User howManyPhotos(User user) {
+        User u = userRepository.findHowManyPhotos(user);
+        return u;
     }
-     */
+
     public List<User> proponowaniUzytkownicy() {
         List<User> users = new ArrayList<User>();
         userRepository.getAllUsers().forEach(users::add);
