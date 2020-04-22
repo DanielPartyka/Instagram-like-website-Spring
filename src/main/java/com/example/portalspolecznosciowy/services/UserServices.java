@@ -24,9 +24,9 @@ public class UserServices {
         User user = userRepository.findIdByEmail(email);
         return user;
     }
-    public User howManyPhotos(Long id) {
-        User user = userRepository.findHowManyPhotos(id);
-        return user;
+    public long findUserIdLong(String email) {
+        User user = userRepository.findIdByEmailLong(email);
+        return user.getId();
     }
 
     public List<User> proponowaniUzytkownicy() {
