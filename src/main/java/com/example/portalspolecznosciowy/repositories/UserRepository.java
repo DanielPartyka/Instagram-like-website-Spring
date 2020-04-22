@@ -11,13 +11,11 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User,Long> {
 
     @Query(value = "select * from user where email = ?1 or nickname=?2", nativeQuery = true)
-    User findByEmail(String email, String nickname);
-
-    @Query(value = "select * from user where email = ?1 and password = ?2", nativeQuery = true)
-    User findByEmailAndPassword(String email, String password);
+    User findByEmailorNickname(String email, String nickname);
 
     @Query(value = "select * from user", nativeQuery = true)
     List<User> getAllUsers();
 
-
+    @Query(value = "select * from user where email =?1", nativeQuery = true)
+    User findIdByEmail(String email);
 }

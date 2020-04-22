@@ -15,21 +15,31 @@ public class Photos {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "section_id", nullable = false)
     private Sections sections;
+    private String name_photo;
     private Date date;
 
     @OneToMany(mappedBy = "photos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comments> comments;
 
+    public String getName_Photo() {
+        return name_photo;
+    }
+
+    public void setName_Photo(String name_photo) {
+        this.name_photo = name_photo;
+    }
+
     public Photos () {
 
     }
 
-    public Photos (User user, Sections sections, String tags, String description, Date date) {
+    public Photos (User user, Sections sections, String tags, String description, Date date, String name_photo) {
         this.user = user;
         this.sections = sections;
         this.tags = tags;
         this.description = description;
         this.date = date;
+        this.name_photo = name_photo;
     }
 
     public Set<Comments> getComments() {

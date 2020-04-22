@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8" />
@@ -74,10 +74,7 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                               data-social-target="https://bulma.io" target="_blank"
-                               href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms"
-                            >
+                            <a class="bd-tw-button button" sec:authorize="!hasAnyAuthority('USER','ADMIN')" href="/registation">
 
                                     <span>
                                         Rejestracja
@@ -85,11 +82,16 @@
                             </a>
                         </p>
                         <p class="control">
-                            <a href="/logowanie" class="button is-primary" title="Disabled button" disabled>
-
-
+                            <a href="/logowanie" sec:authorize="!hasAnyAuthority('USER','ADMIN')" class="button is-primary" title="Disabled button" disabled>
                                 <span>Logowanie</span>
                             </a>
+                        </p>
+                        <p class="control">
+                            <form th:action="@{/logout}" method="post">
+                                <a class="bd-tw-button" sec:authorize="isAuthenticated()">
+                                    <span>Wyloguj się</span>
+                                </a>
+                            </form>
                         </p>
                     </div>
                 </div>
@@ -109,7 +111,25 @@
 
             <div class="column is-8 is-offset-2">
                 <form th:action="@{/login}" th:object="${user}" method="post">
-                <div class="field is-horizontal">
+                    <div class="field is-horizontal" th:if="${param.error}">
+                        <div class="field-label is-normal">
+                            <label class="label"></label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <article class="message is-danger">
+                                    <div class="message-header">
+                                        <p>Błąd</p>
+                                        <button class="delete" aria-label="delete"></button>
+                                    </div>
+                                    <div class="message-body">
+                                        Błędny email lub hasło
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Email</label>
                     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title></title>
@@ -27,36 +27,16 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="https://bulma.io/">
+                <a class="navbar-item" th:href="@{/}">
                     Home
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+                    <a class="navbar-link">
                         Opcje
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                            Overview
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                            Modifiers
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                            Columns
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                            Layout
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                            Form
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                            Elements
-                        </a>
-                        <a class="navbar-item is-active"
-                           href="https://bulma.io/documentation/components/breadcrumb/">
-                            Components
+                        <a class="navbar-item" th:href="@{/add_photo}">
+                            Dodaj Zdjęcie
                         </a>
                     </div>
                 </div>
@@ -66,9 +46,7 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                               data-social-target="https://bulma.io" target="_blank"
-                               href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()" th:href="@{/registration}">
 
                                     <span>
                                         Rejestracja
@@ -76,11 +54,17 @@
                             </a>
                         </p>
                         <p class="control">
-                            <a class="button is-primary"
-                               href="https://github.com/jgthms/bulma/releases/download/0.8.0/bulma-0.8.0.zip">
-
+                            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="button is-primary">
                                 <span>Logowanie</span>
                             </a>
+                        </p>
+                        <p class="control" sec:authorize="isAuthenticated()">
+                            <button class="button is-success"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
+                        </p>
+                        <p class="control">
+                        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                            <button class="button is-warning" type="submit">Wyloguj się</button>
+                        </form>
                         </p>
                     </div>
                 </div>
