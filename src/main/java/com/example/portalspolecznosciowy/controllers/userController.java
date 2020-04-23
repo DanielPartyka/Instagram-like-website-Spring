@@ -1,5 +1,6 @@
 package com.example.portalspolecznosciowy.controllers;
 
+import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass;
 import com.example.portalspolecznosciowy.models.Photos;
 import com.example.portalspolecznosciowy.services.PhotosServices;
 import com.example.portalspolecznosciowy.services.UserServices;
@@ -26,8 +27,9 @@ public class userController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         uzytkownik = authentication.getName();
         long user_id = userServices.findUserIdLong(uzytkownik);
-        System.out.println(photosServices.howManyPhotos(user_id));
-        //modelAndView.addObject("howmanyphotos",userServices.howManyPhotos(user_id));
+        long howmanyPhotos = photosServices.howManyPhotos(user_id);
+        HelpingClass helpingClass = new HelpingClass(howmanyPhotos);
+        modelAndView.addObject("hmp",helpingClass);
         return modelAndView;
     }
 }
