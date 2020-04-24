@@ -46,7 +46,8 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()" th:href="@{/registration}">
+                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()"
+                               th:href="@{/registration}">
 
                                     <span>
                                         Rejestracja
@@ -59,7 +60,8 @@
                             </a>
                         </p>
                         <p class="control" sec:authorize="isAuthenticated()">
-                            <button class="button is-success"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
+                            <button class="button is-success"><span
+                                    th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
                         </p>
                         <p class="control">
                         <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
@@ -100,13 +102,17 @@
                                     </p>
                                 </figure>
                                 <div class="media-content">
-                                    <div class="content">
-                                        <p>
-                                            <strong th:text="${u.nickname}"></strong> <small th:text="${u.name}"></small>&nbsp<small th:text="${u.surname}"></small>
-                                            <br th:text="${u.description}">
+                                    <form method="post" action="@{/}">
+                                        <div class="content">
+                                            <p>
+                                                <strong th:text="${u.nickname}"></strong> <small
+                                                    th:text="${u.name}"></small>&nbsp<small
+                                                    th:text="${u.surname}"></small>
+                                                <br th:text="${u.description}">
 
-                                        </p>
-                                    </div>
+                                            </p>
+                                        </div>
+                                    </form>
                                     <nav class="level is-mobile">
                                         <div class="level-left">
                                             <a class="level-item">

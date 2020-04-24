@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/">
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8"/>
@@ -77,10 +77,7 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                               data-social-target="https://bulma.io" target="_blank"
-                               href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms"
-                               title="Disabled button" disabled>
+                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()" th:href="@{/registration}">
 
                                     <span>
                                         Rejestracja
@@ -88,11 +85,17 @@
                             </a>
                         </p>
                         <p class="control">
-                            <a href="/logowanie" class="button is-primary">
-
-
+                            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="button is-primary">
                                 <span>Logowanie</span>
                             </a>
+                        </p>
+                        <p class="control" sec:authorize="isAuthenticated()">
+                            <button class="button is-success"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
+                        </p>
+                        <p class="control">
+                        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                            <button class="button is-warning" type="submit">Wyloguj się</button>
+                        </form>
                         </p>
                     </div>
                 </div>
@@ -139,7 +142,7 @@
                             </div>
                         </div>
                         <div class="columns">
-                            <h6 class="title is-6" style="text-align: right;">Alexander Pistoletov</h6>
+                            <h6 class="title is-6" style="text-align: right;">Daniel Praktyka</h6>
                         </div>
                     </div>
                 </div>
