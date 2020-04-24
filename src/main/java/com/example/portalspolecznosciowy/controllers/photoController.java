@@ -27,7 +27,7 @@ public class photoController {
     @Autowired
     private PhotosRepository photosRepository;
 
-    public static String uzytkownik;
+    public static String user;
 
     @GetMapping("/add_photo")
     public ModelAndView add_photorender() {
@@ -42,8 +42,8 @@ public class photoController {
         }
         ModelAndView modelAndView = new ModelAndView("/user");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        uzytkownik = authentication.getName();
-        photos.setUser(userServices.findUserId(uzytkownik));
+        user = authentication.getName();
+        photos.setUser(userServices.findUserId(user));
         photos.setSections(sectionsServices.findSectionByName(sections.getName()));
         photos.setTags(photos.getTags());
         photos.setDescription(photos.getDescription());
