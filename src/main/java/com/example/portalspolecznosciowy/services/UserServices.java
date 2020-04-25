@@ -28,8 +28,21 @@ public class UserServices {
         User user = userRepository.findIdByEmailLong(email);
         return user.getId();
     }
+    public long findUserByNickname(String nickname) {
+        User user = userRepository.findByNickname(nickname);
+        return user.getId();
+    }
+    public User findUserObjectbyNickname(String nickname) {
+        User user = userRepository.findByNickname(nickname);
+        return user;
+    }
+    public List<User> proponowaniUzytkownicy(String email) {
+        List<User> users = new ArrayList<User>();
+        userRepository.getAllUsertoFollow(email).forEach(users::add);
+        return users;
+    }
 
-    public List<User> proponowaniUzytkownicy() {
+    public List<User> wszyscyUzytkownicy() {
         List<User> users = new ArrayList<User>();
         userRepository.getAllUsers().forEach(users::add);
         return users;

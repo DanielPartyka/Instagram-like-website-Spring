@@ -77,7 +77,8 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()" th:href="@{/registration}">
+                            <a class="bd-tw-button button" sec:authorize="!isAuthenticated()"
+                               th:href="@{/registration}">
 
                                     <span>
                                         Rejestracja
@@ -90,7 +91,8 @@
                             </a>
                         </p>
                         <p class="control" sec:authorize="isAuthenticated()">
-                            <button class="button is-success"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
+                            <button class="button is-success"><span
+                                    th:text="${#authentication.getPrincipal().getUsername()}"></span></button>
                         </p>
                         <p class="control">
                         <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
@@ -112,13 +114,13 @@
                     <div class="column is-3">
                         <figure class="image is-128x128">
                             <img class="is-rounded"
-                                 src="https://versions.bulma.io/0.7.0/images/placeholders/128x128.png">
+                                 src="https://lh3.googleusercontent.com/proxy/YyDuw6RGLSdfFeCYzZNRhp3LSRGQpRhKLhs3z3wUe4CdO_ip2WMzwwCmfXrzgeBdbVG1Ws-5x36_xmCMAnOxeeGjWQYet4sb2Jsmyqtm3iESq9tIyqnZQyXQrhocrWC0g4di_auiKMNjxyb1J7BnOOj5kNhrqYGBQXfCidlFC31yl2z9L8C71HiolBY">
                         </figure>
                     </div>
                     <div class="column is-9">
                         <div class="columns">
                             <div class="column is-3">
-                                <h3 class="title is-3" style="text-align: center;">User</h3>
+                                <h3 class="title is-3" th:text="${user_nickname}"></h3>
                             </div>
                             <div class="column is-2">
                                 <button class="button is-info">Obserwuj</button>
@@ -135,14 +137,20 @@
                                 </th:block>
                             </div>
                             <div class="column">
-                                <h3><b>415</b> obserwujących</h3>
+                                <th:block th:each="itr : ${hmuftu}">
+                                    <h3><b th:text="${itr.number}">415</b> obserwujących</h3>
+                                </th:block>
                             </div>
                             <div class="column">
-                                <h3>Obserwowani: <b>821</b></h3>
+                                <th:block th:each="itr : ${hmuf}">
+                                    <h3>Obserwowani: <b th:text="${itr.number}"></b></h3>
+                                </th:block>
                             </div>
                         </div>
                         <div class="columns">
-                            <h6 class="title is-6" style="text-align: right;">Daniel Praktyka</h6>
+                            <h6 class="title is-6" th:text="${user_name}"></h6>
+                            <h6 class="title is-6">&nbsp;</h6>
+                            <h6 class="title is-6" th:text="${user_surname}"></h6>
                         </div>
                     </div>
                 </div>

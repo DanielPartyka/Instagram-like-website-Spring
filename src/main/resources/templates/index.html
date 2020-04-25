@@ -102,17 +102,19 @@
                                     </p>
                                 </figure>
                                 <div class="media-content">
-                                    <form method="post" action="@{/}">
-                                        <div class="content">
-                                            <p>
-                                                <strong th:text="${u.nickname}"></strong> <small
-                                                    th:text="${u.name}"></small>&nbsp<small
-                                                    th:text="${u.surname}"></small>
-                                                <br th:text="${u.description}">
 
-                                            </p>
-                                        </div>
-                                    </form>
+                                    <div class="content">
+                                        <p>
+                                        <form method="post" th:action="@{/follow_user}" id="myform">
+                                            <input type="hidden" th:value="${u.email}" name="email" id="email">
+                                            <strong th:text="${u.nickname}"></strong> <small
+                                                th:text="${u.name}"></small>&nbsp<small
+                                                th:text="${u.surname}"></small>
+                                            <br th:text="${u.description}">
+                                        </form>
+                                        </p>
+                                    </div>
+
                                     <nav class="level is-mobile">
                                         <div class="level-left">
                                             <a class="level-item">
@@ -128,8 +130,13 @@
                                     </nav>
                                 </div>
                                 <div class="media-right">
-                                    <button class="button is-link">Obserwuj</button>
+                                    <button class="button is-link" sec:authorize="!isAuthenticated()">Zaloguj się
+                                    </button>
+                                    <button class="button is-link" sec:authorize="isAuthenticated()" type="submit" form="myform">
+                                        Obserwuj
+                                    </button>
                                 </div>
+
                             </article>
                         </div>
                     </div>

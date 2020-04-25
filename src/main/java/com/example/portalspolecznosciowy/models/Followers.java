@@ -10,13 +10,15 @@ public class Followers {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    private String follower_id;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "follower_id",nullable = false)
+    private User follower_id;
 
     public Followers() {
 
     }
 
-    public Followers(User user,String follower_id) {
+    public Followers(User user, User follower_id) {
         this.user = user;
         this.follower_id = follower_id;
     }
@@ -38,11 +40,11 @@ public class Followers {
         this.user = user;
     }
 
-    public String getFollower_id() {
+    public User getFollower_id() {
         return follower_id;
     }
 
-    public void setFollower_id(String follower_id) {
+    public void setFollower_id(User follower_id) {
         this.follower_id = follower_id;
     }
 }
