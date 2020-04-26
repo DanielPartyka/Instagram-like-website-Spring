@@ -32,7 +32,7 @@ public class UserServices {
         User user = userRepository.findByNickname(nickname);
         return user.getId();
     }
-    public User findUserObjectbyNickname(String nickname) {
+    public User findUserObjbyNickname(String nickname) {
         User user = userRepository.findByNickname(nickname);
         return user;
     }
