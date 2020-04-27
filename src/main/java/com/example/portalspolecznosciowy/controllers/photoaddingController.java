@@ -59,16 +59,18 @@ public class photoaddingController {
         photos.setDate(today);
         //Upload Image to folder
 
-        String path = System.getProperty("user.dir") + "\\src\\main\\user_files";
-        path+="\\"+user;
+        String path = System.getProperty("user.dir") + "\\uploads\\";
+        path+=user;
+        System.out.println(path);
         File f = new File(path);
         if (!f.exists()) {
             f.mkdir();
         }
         byte[] bytes = file.getBytes();
-        Path pathsave = Paths.get(path + file.getOriginalFilename());
+        Path pathsave = Paths.get(path,file.getOriginalFilename());
         Files.write(pathsave,bytes);
         //
+        photos.setSource(path+"\\"+file.getOriginalFilename());
         photosRepository.save(photos);
         return modelAndView;
     }

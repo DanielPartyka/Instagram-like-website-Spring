@@ -1,11 +1,14 @@
 package com.example.portalspolecznosciowy.controllers;
 
 import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass;
+import com.example.portalspolecznosciowy.models.Photos;
 import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.services.FollowersServices;
 import com.example.portalspolecznosciowy.services.PhotosServices;
 import com.example.portalspolecznosciowy.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +25,7 @@ public class userController {
     private FollowersServices followersServices;
 
     private static String userr;
+    private static String user_email;
 
     @GetMapping("/{nickname}")
     public ModelAndView userrender(@PathVariable("nickname") String nickname) {
@@ -32,6 +36,8 @@ public class userController {
             return modelAndView;
         } else {
             try {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                user_email = authentication.getName();
                 long user_id = userServices.findUserByNickname(userr);
                 System.out.println(user_id);
                 //Put data on web
@@ -39,6 +45,8 @@ public class userController {
                 modelAndView.addObject("user_nickname", user.getNickname());
                 modelAndView.addObject("user_name", user.getName());
                 modelAndView.addObject("user_surname", user.getSurname());
+                //Print Photos
+                modelAndView.addObject("photos",photosServices.getAmountofPhotos(user_id));
                 //HowManyPhotos Does the user posted
                 long howmanyPhotos = photosServices.howManyPhotos(user_id);
                 HelpingClass helpingClass = new HelpingClass(howmanyPhotos);

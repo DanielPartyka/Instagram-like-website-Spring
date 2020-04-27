@@ -13,10 +13,4 @@ public class PortalspolecznosciowyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PortalspolecznosciowyApplication.class, args);
 	}
-	@Bean
-	public CommandLineRunner instagramexample(UserRepository userRepository) {
-		return args -> {
-
-		};
-	}
 }

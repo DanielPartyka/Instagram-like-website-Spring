@@ -5,6 +5,9 @@ import com.example.portalspolecznosciowy.repositories.PhotosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PhotosServices {
 
@@ -17,6 +20,11 @@ public class PhotosServices {
 
     public Photos findPhotoDetails(long photo_id) {
         Photos photos = photosRepository.findPhotoDetails(photo_id);
+        return photos;
+    }
+    public List<Photos> getAmountofPhotos(long id) {
+        List<Photos> photos = new ArrayList<Photos>();
+        photosRepository.getAmountofPhotos(id).forEach(photos::add);
         return photos;
     }
 }
