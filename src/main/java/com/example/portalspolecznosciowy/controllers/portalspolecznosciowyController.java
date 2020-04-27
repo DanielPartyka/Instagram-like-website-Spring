@@ -1,20 +1,15 @@
 package com.example.portalspolecznosciowy.controllers;
 
-import com.example.portalspolecznosciowy.models.Followers;
-import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.repositories.FollowersRepository;
-import com.example.portalspolecznosciowy.repositories.UserRepository;
-import com.example.portalspolecznosciowy.services.SectionsServices;
 import com.example.portalspolecznosciowy.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 @Controller
 public class portalspolecznosciowyController {
@@ -27,8 +22,7 @@ public class portalspolecznosciowyController {
     public static String userr;
 
     @GetMapping("/")
-    public ModelAndView indexrender()
-    {
+    public ModelAndView indexrender() {
         ModelAndView modelAndView = new ModelAndView("index");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userr = authentication.getName();
@@ -36,6 +30,7 @@ public class portalspolecznosciowyController {
             modelAndView.addObject("users",userServices.wszyscyUzytkownicy());
         }
         else modelAndView.addObject("users",userServices.proponowaniUzytkownicy(userr));
+
         return modelAndView;
     }
 }

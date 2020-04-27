@@ -28,7 +28,7 @@ public class userController {
         ModelAndView modelAndView = new ModelAndView("/user");
         userr = nickname;
         if (userr == null) {
-            modelAndView.setViewName("/404");
+            modelAndView.setViewName("/error");
             return modelAndView;
         } else {
             try {
@@ -54,7 +54,7 @@ public class userController {
                 return modelAndView;
             } catch (NullPointerException e) {
                 System.out.println("Nie znaleziono uzytkownika");
-                modelAndView.setViewName("/404");
+                modelAndView.setViewName("/error");
                 return modelAndView;
             }
         }

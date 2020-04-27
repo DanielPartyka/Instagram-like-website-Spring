@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
+
 @Controller
 public class registrationController {
 
@@ -27,7 +30,7 @@ public class registrationController {
     }
 
     @PostMapping("/registration")
-    public ModelAndView registeruser(@ModelAttribute("user") User user) {
+    public ModelAndView registeruser(@ModelAttribute("user") User user) throws IOException {
         ModelAndView modelAndView = new ModelAndView("login");
 
             if (userServices.checkifuserexists(user.getEmail(),user.getNickname())) {

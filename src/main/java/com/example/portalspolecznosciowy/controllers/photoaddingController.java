@@ -13,8 +13,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 @Controller
@@ -36,7 +43,7 @@ public class photoaddingController {
         return modelAndView;
     }
     @PostMapping("/add_photo")
-    public ModelAndView add_photorender(@ModelAttribute("photos") Photos photos,@ModelAttribute("sections") Sections sections, BindingResult result) {
+    public ModelAndView add_photorender(@ModelAttribute("photos") Photos photos, @ModelAttribute("sections") Sections sections, @RequestParam("files") MultipartFile file, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             System.out.println("Jest problem z " + result);
         }
@@ -50,6 +57,18 @@ public class photoaddingController {
         photos.setName_photo(photos.getName_photo());
         Date today = new Date();
         photos.setDate(today);
+        //Upload Image to folder
+
+        String path = System.getProperty("user.dir") + "\\src\\main\\user_files";
+        path+="\\"+user;
+        File f = new File(path);
+        if (!f.exists()) {
+            f.mkdir();
+        }
+        byte[] bytes = file.getBytes();
+        Path pathsave = Paths.get(path + file.getOriginalFilename());
+        Files.write(pathsave,bytes);
+        //
         photosRepository.save(photos);
         return modelAndView;
     }

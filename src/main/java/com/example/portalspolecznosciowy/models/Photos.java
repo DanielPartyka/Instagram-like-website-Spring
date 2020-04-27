@@ -19,6 +19,15 @@ public class Photos {
     private Date date;
     private String tags;
     private String description;
+    private String source;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getTags() {
         return tags;
@@ -91,13 +100,14 @@ public class Photos {
 
     }
 
-    public Photos (User user, Sections sections, String tags, String description, Date date, String name_photo) {
+    public Photos (User user, Sections sections, String tags, String description, Date date, String name_photo, String source) {
         this.user = user;
         this.sections = sections;
         this.tags = tags;
         this.description = description;
         this.date = date;
         this.name_photo = name_photo;
+        this.source = source;
     }
 
 
