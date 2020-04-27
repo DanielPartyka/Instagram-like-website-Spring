@@ -70,7 +70,7 @@ public class photoaddingController {
         Path pathsave = Paths.get(path,file.getOriginalFilename());
         Files.write(pathsave,bytes);
         //
-        photos.setSource(path+"\\"+file.getOriginalFilename());
+        photos.setSource(file.getOriginalFilename());
         photosRepository.save(photos);
         return modelAndView;
     }
