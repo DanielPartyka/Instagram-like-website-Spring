@@ -28,13 +28,14 @@ public class photoController {
 
     private String userr;
 
-    @GetMapping("/photo/id")
+    @GetMapping("/photo/{id}")
     public ModelAndView photo()
     {
         ModelAndView modelAndView = new ModelAndView("photo");
+
         return modelAndView;
     }
-    @PostMapping("/photo/id")
+    @PostMapping("/photo/{id}")
     public ModelAndView addcomment(@PathVariable("photo_id") long photo_id, @ModelAttribute("comments") Comments comments) {
         ModelAndView modelAndView  = new ModelAndView("photo");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
