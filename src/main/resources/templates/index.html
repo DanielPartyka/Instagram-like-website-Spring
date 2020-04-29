@@ -107,8 +107,8 @@
                                         <p>
                                         <form method="post" th:action="@{/follow_user}" id="myform">
                                             <input type="hidden" th:value="${u.email}" name="email" id="email">
-                                            <strong th:text="${u.nickname}"></strong> <small
-                                                th:text="${u.name}"></small>&nbsp<small
+                                            <b><a th:href="@{/} + ${u.nickname}" th:text="${u.nickname}" style="text-decoration:none;"></a></b>
+                                            <small th:text="${u.name}"></small>&nbsp<small
                                                 th:text="${u.surname}"></small>
                                             <br th:text="${u.description}">
                                         </form>

@@ -109,105 +109,87 @@
     <div class="box">
         <div class="container">
             <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <figure class="image is-square">
-                            <img src="https://bulma.io/images/placeholders/480x480.png">
-                        </figure>
+                <th:block th:each="itr : ${photodetails}">
+                    <div class="columns">
+                        <div class="column">
+                            <figure class="image is-square">
+                                <img th:src="@{'/uploads/partykadaniel@poczta.fm/' + ${itr.source}}">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column">
+                                    <h2 class="title is-2" th:text="${itr.name_photo}"></h2>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <th:block th:each="itr: ${comments}">
+                                        <article class="media">
+                                            <figure class="media-left">
+                                                <p class="image is-64x64">
+                                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                                </p>
+                                            </figure>
+                                            <div class="media-content">
+                                                <div class="content">
+                                                    <p>
+                                                        <!--
+                                                        <th:block th:each="user: ${userdetails}">
+                                                            <strong th:text="${user.nickname}"></strong>
+                                                        </th:block>
+                                                        -->
+                                                        <br th:text="${itr.description}">
+                                                        <br>
+                                                        <a>Like</a> · <a>Reply</a>
+                                                        <small th:text="${itr.date}"></small>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </article>
+                                    </th:block>
+                                    <article class="media" style="margin-bottom: 0px;">
+                                        <figure class="media-left">
+                                            <p class="image is-64x64">
+                                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                                            </p>
+                                        </figure>
+                                        <div class="media-content">
+                                            <div class="field">
+                                                <p class="control">
+                                                <form method="post" th:action="@{/photo/} + ${itr.photo_id}"
+                                                      id="commentform">
+                                                    <input class="textarea" type="textarea" name="description"
+                                                           id="description">
+                                                </form>
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <p class="control">
+                                                    <button class="button" type="submit" form="commentform">Post
+                                                        comment
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="column">
-                        <article class="media">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Barbara Middleton</strong>
-                                        <br>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros
-                                        lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris
-                                        sit amet dolor blandit rutrum. Nunc in tempus turpis.
-                                        <br>
-                                        <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="media">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Barbara Middleton</strong>
-                                        <br>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros
-                                        lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris
-                                        sit amet dolor blandit rutrum. Nunc in tempus turpis.
-                                        <br>
-                                        <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="media">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>Barbara Middleton</strong>
-                                        <br>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros
-                                        lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris
-                                        sit amet dolor blandit rutrum. Nunc in tempus turpis.
-                                        <br>
-                                        <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="media" style="margin-bottom: 0px;">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="field">
-                                    <p class="control">
-                                        <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                                    </p>
-                                </div>
-                                <div class="field">
-                                    <p class="control">
-                                        <button class="button">Post comment</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                </th:block>
             </div>
         </div>
     </div>
 </section>
 <section>
     <footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>Website created</strong> by <a href="https://jgthms.com">Daniel Partyka</a>
-        </p>
-    </div>
+        <div class="content has-text-centered">
+            <p>
+                <strong>Website created</strong> by <a href="https://jgthms.com">Daniel Partyka</a>
+            </p>
+        </div>
     </footer>
 </section>
 </body>

@@ -39,7 +39,6 @@ public class userController {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
                 user_email = authentication.getName();
                 long user_id = userServices.findUserByNickname(userr);
-                System.out.println(user_id);
                 //Put data on web
                 User user = userServices.findUserObjbyNickname(userr);
                 modelAndView.addObject("user_nickname", user.getNickname());

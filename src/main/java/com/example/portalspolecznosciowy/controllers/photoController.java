@@ -1,7 +1,11 @@
 package com.example.portalspolecznosciowy.controllers;
 
+import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass2;
 import com.example.portalspolecznosciowy.models.Comments;
-import com.example.portalspolecznosciowy.repositories.CommetsRepository;
+import com.example.portalspolecznosciowy.models.Photos;
+import com.example.portalspolecznosciowy.models.User;
+import com.example.portalspolecznosciowy.repositories.CommentsRepository;
+import com.example.portalspolecznosciowy.services.CommentsServices;
 import com.example.portalspolecznosciowy.services.PhotosServices;
 import com.example.portalspolecznosciowy.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class photoController {
@@ -24,28 +29,39 @@ public class photoController {
     @Autowired
     private PhotosServices photosServices;
     @Autowired
-    private CommetsRepository commetsRepository;
+    private CommentsRepository commentsRepository;
+    @Autowired
+    private CommentsServices commentsServices;
 
     private String userr;
 
     @GetMapping("/photo/{id}")
-    public ModelAndView photo()
+    public ModelAndView photo(@PathVariable("id") long id)
     {
         ModelAndView modelAndView = new ModelAndView("photo");
-
+        Photos photos = photosServices.findPhotoDetails(id);
+        List<Comments> comments = commentsServices.getPhotoDetailById(id);
+        modelAndView.addObject("comments",comments);
+        /*
+            Trzeba zrobic klase pomocnicza, dodaj z niej obiekty z listy, dodac pole user_nickname i uzywajac commentsServices.getUserNicknameById wyswietlic
+        */
+        //HelpingClass2 helpingClass2 = new HelpingClass2(commentsServices.getUserNicknameById(comments.getComment_id()));
+        //System.out.println(helpingClass2.getNickname());
+        //modelAndView.addObject("userdetails",helpingClass2);
+        modelAndView.addObject("photodetails",photos);
         return modelAndView;
     }
     @PostMapping("/photo/{id}")
-    public ModelAndView addcomment(@PathVariable("photo_id") long photo_id, @ModelAttribute("comments") Comments comments) {
-        ModelAndView modelAndView  = new ModelAndView("photo");
+    public ModelAndView addcomment(@PathVariable("id") String id, @ModelAttribute("comments") Comments comments) {
+        ModelAndView modelAndView  = new ModelAndView("index");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userr = authentication.getName();
         comments.setUser(userServices.findUserId(userr));
         Date today = new Date();
         comments.setDate(today);
         comments.setDescription(comments.getDescription());
-        comments.setPhotos(photosServices.findPhotoDetails(photo_id));
-        commetsRepository.save(comments);
+        comments.setPhotos(photosServices.findPhotoDetails(Integer.parseInt(id)));
+        commentsRepository.save(comments);
         return modelAndView;
     }
 }

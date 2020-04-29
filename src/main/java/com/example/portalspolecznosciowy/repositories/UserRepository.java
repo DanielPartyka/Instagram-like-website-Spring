@@ -36,4 +36,7 @@ public interface UserRepository extends CrudRepository<User,Long> {
 
     @Query(value = "select * from user where nickname=?1",nativeQuery = true)
     User findByNickname(String nickname);
+
+    @Query(value = "select u.nickname from user u,comments c where u.id = c.user_id and c.comment_id=?1",nativeQuery = true)
+    String findUserNicknameById(long id);
 }

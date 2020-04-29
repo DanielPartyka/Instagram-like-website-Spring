@@ -29,13 +29,12 @@ import org.springframework.web.servlet.ModelAndView;
         if (result.hasErrors()) {
             System.out.println("Jest problem z " + result);
         }
-        ModelAndView modelAndView = new ModelAndView("index");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userr = authentication.getName();
         followers.setUser(userServices.findUserId(userr));
         User u = userServices.findUserId(user.getEmail());
         followers.setFollower_id(u);
         followersRepository.save(followers);
-        return modelAndView;
+        return new ModelAndView("redirect:/");
     }
 }

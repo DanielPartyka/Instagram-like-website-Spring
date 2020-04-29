@@ -27,4 +27,10 @@ public class PhotosServices {
         photosRepository.getAmountofPhotos(id).forEach(photos::add);
         return photos;
     }
+    public Photos getPhotoDetailsById(long id) {
+        Photos photos = photosRepository.findPhotoDetailsById(id);
+        return photos;
+    }
+
+
 }
