@@ -168,7 +168,7 @@
                     <th:block th:each="itr : ${photos}">
                         <div class="column">
                             <figure class="image is-square">
-                                <img th:src="@{'/uploads/partykadaniel@poczta.fm/' + ${itr.source}}">
+                                <a th:href="@{'photo/' + ${itr.photo_id}}"><img th:src="@{'/uploads/' + ${itr.source}}"> </a>
                             </figure>
                         </div>
                     </th:block>

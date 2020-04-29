@@ -84,8 +84,14 @@
 
                 <div class="column is-10 is-offset-1">
                     <div class="field has-addons">
-                        <input class="input" type="text" placeholder="Szukaj po tagach, lub nazwach użytkowników">
-                        <button class="button is-primary">Szukaj</button>
+                        <!--
+                        <form method="post" th:action=@{/}">
+                         -->
+                            <input class="input" type="text" placeholder="Szukaj po tagach, lub nazwach użytkowników" name="value" id="value">
+                            <button class="button is-primary" type="submit">Szukaj</button>
+                        <!--
+                        </form>
+                        -->
                     </div>
                 </div>
 
@@ -107,7 +113,8 @@
                                         <p>
                                         <form method="post" th:action="@{/follow_user}" id="myform">
                                             <input type="hidden" th:value="${u.email}" name="email" id="email">
-                                            <b><a th:href="@{/} + ${u.nickname}" th:text="${u.nickname}" style="text-decoration:none;"></a></b>
+                                            <b><a th:href="@{/} + ${u.nickname}" th:text="${u.nickname}"
+                                                  style="text-decoration:none;"></a></b>
                                             <small th:text="${u.name}"></small>&nbsp<small
                                                 th:text="${u.surname}"></small>
                                             <br th:text="${u.description}">
@@ -132,7 +139,8 @@
                                 <div class="media-right">
                                     <button class="button is-link" sec:authorize="!isAuthenticated()">Zaloguj się
                                     </button>
-                                    <button class="button is-link" sec:authorize="isAuthenticated()" type="submit" form="myform">
+                                    <button class="button is-link" sec:authorize="isAuthenticated()" type="submit"
+                                            form="myform">
                                         Obserwuj
                                     </button>
                                 </div>
