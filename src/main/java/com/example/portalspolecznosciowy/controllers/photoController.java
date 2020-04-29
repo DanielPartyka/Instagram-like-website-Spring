@@ -1,5 +1,6 @@
 package com.example.portalspolecznosciowy.controllers;
 
+import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass;
 import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass2;
 import com.example.portalspolecznosciowy.models.Comments;
 import com.example.portalspolecznosciowy.models.Photos;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,13 +43,11 @@ public class photoController {
         ModelAndView modelAndView = new ModelAndView("photo");
         Photos photos = photosServices.findPhotoDetails(id);
         List<Comments> comments = commentsServices.getPhotoDetailById(id);
-        modelAndView.addObject("comments",comments);
-        /*
-            Trzeba zrobic klase pomocnicza, dodaj z niej obiekty z listy, dodac pole user_nickname i uzywajac commentsServices.getUserNicknameById wyswietlic
-        */
-        //HelpingClass2 helpingClass2 = new HelpingClass2(commentsServices.getUserNicknameById(comments.getComment_id()));
-        //System.out.println(helpingClass2.getNickname());
-        //modelAndView.addObject("userdetails",helpingClass2);
+        List<HelpingClass2> helpingClass2 = new ArrayList<>();
+        for (Comments c : comments) {
+            helpingClass2.add(new HelpingClass2(commentsServices.getUserNicknameById(c.getComment_id()),c.getDescription(),c.getDate()));
+        }
+        modelAndView.addObject("userdetails",helpingClass2);
         modelAndView.addObject("photodetails",photos);
         return modelAndView;
     }

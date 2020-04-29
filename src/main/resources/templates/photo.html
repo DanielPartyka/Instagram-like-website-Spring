@@ -124,7 +124,7 @@
                             </div>
                             <div class="columns">
                                 <div class="column">
-                                    <th:block th:each="itr: ${comments}">
+                                    <th:block th:each="itr: ${userdetails}">
                                         <article class="media">
                                             <figure class="media-left">
                                                 <p class="image is-64x64">
@@ -136,9 +136,9 @@
                                                     <p>
                                                         <!--
                                                         <th:block th:each="user: ${userdetails}">
-                                                            <strong th:text="${user.nickname}"></strong>
-                                                        </th:block>
+                                                       </th:block>
                                                         -->
+                                                        <strong th:text="${itr.nickname}"></strong>
                                                         <br th:text="${itr.description}">
                                                         <br>
                                                         <a>Like</a> · <a>Reply</a>
