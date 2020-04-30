@@ -1,4 +1,4 @@
-package com.example.portalspolecznosciowy.controllers.helpingClasses;
+package com.example.portalspolecznosciowy.helpingClasses;
 
 import java.util.Date;
 

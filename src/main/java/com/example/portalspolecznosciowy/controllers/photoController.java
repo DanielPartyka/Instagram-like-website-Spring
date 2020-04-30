@@ -1,10 +1,8 @@
 package com.example.portalspolecznosciowy.controllers;
 
-import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass;
-import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass2;
+import com.example.portalspolecznosciowy.helpingClasses.HelpingClass2;
 import com.example.portalspolecznosciowy.models.Comments;
 import com.example.portalspolecznosciowy.models.Photos;
-import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.repositories.CommentsRepository;
 import com.example.portalspolecznosciowy.services.CommentsServices;
 import com.example.portalspolecznosciowy.services.PhotosServices;

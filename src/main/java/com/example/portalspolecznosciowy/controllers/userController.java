@@ -1,7 +1,6 @@
 package com.example.portalspolecznosciowy.controllers;
 
-import com.example.portalspolecznosciowy.controllers.helpingClasses.HelpingClass;
-import com.example.portalspolecznosciowy.models.Photos;
+import com.example.portalspolecznosciowy.helpingClasses.HelpingClass;
 import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.services.FollowersServices;
 import com.example.portalspolecznosciowy.services.PhotosServices;

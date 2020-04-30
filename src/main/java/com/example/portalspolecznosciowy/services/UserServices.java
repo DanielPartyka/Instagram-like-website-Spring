@@ -47,4 +47,9 @@ public class UserServices {
         userRepository.getAllUsers().forEach(users::add);
         return users;
     }
+    public List<User> findUsersByQuery(String q) {
+        List<User> users = new ArrayList<User>();
+        userRepository.findUserbyQuery(q).forEach(users::add);
+        return users;
+    }
 }

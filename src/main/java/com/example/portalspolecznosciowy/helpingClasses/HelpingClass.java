@@ -1,4 +1,4 @@
-package com.example.portalspolecznosciowy.controllers.helpingClasses;
+package com.example.portalspolecznosciowy.helpingClasses;
 
 public class HelpingClass {
     private long number;
