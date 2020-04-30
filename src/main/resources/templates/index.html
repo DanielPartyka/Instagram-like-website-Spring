@@ -84,13 +84,8 @@
 
                 <div class="column is-10 is-offset-1">
                     <div class="field has-addons">
-                        <form th:method="post" th:action="@{/sections}">
-
                             <input class="input" type="text" placeholder="Szukaj po tagach, lub nazwach użytkowników" th:name="q" id="q">
-                            <button class="button is-primary" type="submit">Szukaj</button>
-
-                        </form>
-
+                            <a th:href="@{/sections}"><button class="button is-primary" type="submit">Szukaj</button></a>
                     </div>
                 </div>
 

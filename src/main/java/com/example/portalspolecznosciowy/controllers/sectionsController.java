@@ -20,19 +20,20 @@ public class sectionsController {
     @Autowired
     private SectionsServices sectionsServices;
 
-    @GetMapping("/sections")
-    public ModelAndView generatesections(@RequestParam("q") String q) {
+    @GetMapping("/sections_find")
+    public ModelAndView generatesections(@RequestParam("value") String value) {
         ModelAndView modelAndView = new ModelAndView("sections");
-            System.out.println(q);
+            System.out.println(value);
             modelAndView.addObject("sections",sectionsServices.allSections());
-            modelAndView.addObject("users",userServices.wszyscyUzytkownicy());
+            modelAndView.addObject("users",userServices.findUsersByQuery(value));
             return  modelAndView;
     }
-    @GetMapping("/userfinder")
-    public ModelAndView finduser(@PathVariable("q") String q){
-        ModelAndView modelAndView = new ModelAndView("userfinder");
-        modelAndView.addObject("users",userServices.findUsersByQuery(q));
-        return modelAndView;
+    @GetMapping("/sections")
+    public ModelAndView generatesections() {
+        ModelAndView modelAndView = new ModelAndView("sections");
+        modelAndView.addObject("sections",sectionsServices.allSections());
+        modelAndView.addObject("users",userServices.wszyscyUzytkownicy());
+        return  modelAndView;
     }
 
 }
