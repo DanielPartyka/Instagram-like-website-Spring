@@ -42,4 +42,5 @@ public interface UserRepository extends CrudRepository<User,Long> {
 
     @Query(value = "select * from user u where u.name like %?1%", nativeQuery = true)
     List<User> findUserbyQuery(String query);
+
 }

@@ -33,6 +33,7 @@ public class portalspolecznosciowyController {
         }
         else modelAndView.addObject("users",userServices.proponowaniUzytkownicy(userr));
 
+        modelAndView.addObject("current_user",userServices.findUserId(userr));
         return modelAndView;
     }
     @PostMapping("/")

@@ -31,6 +31,11 @@ public class PhotosServices {
         Photos photos = photosRepository.findPhotoDetailsById(id);
         return photos;
     }
+    public List<Photos> getPhotosBySection(long id) {
+        List<Photos> photos = new ArrayList<>();
+        photosRepository.getPhotosBySection(id).forEach(photos::add);
+        return photos;
+    }
 
 
 }

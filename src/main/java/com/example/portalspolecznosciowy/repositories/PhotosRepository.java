@@ -21,4 +21,7 @@ public interface PhotosRepository extends CrudRepository<Photos,Long> {
     @Query(value = "Select p.photo_id, p.user_id, p.date, p.description, p.tags, p.section_id, p.name_photo,p.source from photos p, user u " +
             "where p.user_id = u.id and photo_id =?1", nativeQuery = true)
     Photos findPhotoDetailsById(long photo_id);
+
+    @Query(value = "select p.section_id,p.photo_id,p.date,p.user_id,p.description, p.tags,p.name_photo,p.source from photos p, sections s where p.section_id = s.section_id and s.section_id = ?1", nativeQuery = true)
+    List<Photos> getPhotosBySection(long section_id);
 }

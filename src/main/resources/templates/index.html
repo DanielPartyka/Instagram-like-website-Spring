@@ -38,6 +38,14 @@
                         <a class="navbar-item" th:href="@{/add_photo}">
                             Dodaj Zdjęcie
                         </a>
+                        <a class="navbar-item" th:href="@{/sections}">
+                            Sekcje
+                        </a>
+                        <th:block th:each="cuser :${current_user}">
+                        <a class="navbar-item" th:href="@{'/' + ${cuser.nickname}}" sec:authorize="isAuthenticated()">
+                            Mój profil
+                        </a>
+                        </th:block>
                     </div>
                 </div>
             </div>
