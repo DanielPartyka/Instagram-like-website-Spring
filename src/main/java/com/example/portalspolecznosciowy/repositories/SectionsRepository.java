@@ -15,4 +15,7 @@ public interface SectionsRepository extends CrudRepository<Sections,Long> {
 
     @Query(value = "select * from sections where name =?1", nativeQuery = true)
     Sections findIdByName(String email);
+
+    @Query(value = "select name from sections where section_id=?1", nativeQuery = true)
+    String findSectionName(long id);
 }

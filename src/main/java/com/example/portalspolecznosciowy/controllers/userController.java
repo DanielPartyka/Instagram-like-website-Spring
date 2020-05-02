@@ -23,7 +23,7 @@ public class userController {
     @Autowired
     private FollowersServices followersServices;
 
-    private static String userr;
+    private String userr;
     private static String user_email;
 
     @GetMapping("/{nickname}")
@@ -40,6 +40,20 @@ public class userController {
                 long user_id = userServices.findUserByNickname(userr);
                 //Put data on web
                 User user = userServices.findUserObjbyNickname(userr);
+                //check_if_user_is_followed
+                User usercheck = userServices.findUserId(user_email);
+                if (userr.equals(usercheck.getNickname())) {
+                    modelAndView.addObject("yourprofile",true);
+                }
+                else {
+                    if (followersServices.checkifuserisfollowed(usercheck.getId())) {
+                        modelAndView.addObject("follow",true);
+                    }
+                    else {
+                        modelAndView.addObject("follow",false);
+                    }
+                }
+                modelAndView.addObject("email",user.getEmail());
                 modelAndView.addObject("user_nickname", user.getNickname());
                 modelAndView.addObject("user_name", user.getName());
                 modelAndView.addObject("user_surname", user.getSurname());

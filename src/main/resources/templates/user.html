@@ -120,13 +120,28 @@
                     <div class="column is-9">
                         <div class="columns">
                             <div class="column is-3">
-                                <h3 class="title is-3" th:text="${user_nickname}"></h3>
+                                <h3 class="title is-3" th:text="${user_nickname}" style="text-align: center"></h3>
                             </div>
+                            <th:block th:if="${follow}">
+                                <div class="column is-2">
+                                    <form method="post" th:action="@{/follow_user}" id="followform">
+                                    </form>
+                                    <button class="button is-info" type="submit" form="followform">Obserwuj</button>
+                                    <input type="hidden" th:value="${email}" name="email" id="email" form="followform">
+                                </div>
+                            </th:block>
+                            <th:block th:unless="${follow}">
+                                <div class="column is-2">
+                                    <button class="button is-info">Obserwujesz</button>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${yourprofile}">
+                                <div class="column is-2">
+                                    <button class="button is-info">Twój profil</button>
+                                </div>
+                            </th:block>
                             <div class="column is-2">
-                                <button class="button is-info">Obserwuj</button>
-                            </div>
-                            <div class="column is-2">
-                                <h3 class="title is-3" style="margin-left: 5px;
+                                <h3 class="title is-3" style="margin-left: 20px;
                                     margin-top: -8px;">...</h3>
                             </div>
                         </div>
@@ -168,7 +183,8 @@
                     <th:block th:each="itr : ${photos}">
                         <div class="column">
                             <figure class="image is-square">
-                                <a th:href="@{'photo/' + ${itr.photo_id}}"><img th:src="@{'/uploads/' + ${itr.source}}"> </a>
+                                <a th:href="@{'photo/' + ${itr.photo_id}}"><img th:src="@{'/uploads/' + ${itr.source}}">
+                                </a>
                             </figure>
                         </div>
                     </th:block>

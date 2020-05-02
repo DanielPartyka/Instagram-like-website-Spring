@@ -52,7 +52,16 @@ public class photoaddingController {
         user = authentication.getName();
         photos.setUser(userServices.findUserId(user));
         photos.setSections(sectionsServices.findSectionByName(sections.getName()));
-        photos.setTags(photos.getTags());
+        String tags = photos.getTags();
+        String[] splited_tags = tags.split(",");
+        String final_tags = "";
+        for (String s : splited_tags) {
+            s = "#" + s;
+        }
+        for (String s : splited_tags) {
+            final_tags += s;
+        }
+        photos.setTags(final_tags);
         photos.setDescription(photos.getDescription());
         photos.setName_photo(photos.getName_photo());
         Date today = new Date();

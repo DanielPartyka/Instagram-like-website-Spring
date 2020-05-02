@@ -52,4 +52,11 @@ public class UserServices {
         userRepository.findUserbyQuery(q).forEach(users::add);
         return users;
     }
+    public String findUserNicknameByPhotoId(long id) {
+        return  userRepository.findUserNicknameByPhotoId(id);
+    }
+    public User getAllUsersById(long id) {
+        User user = userRepository.getAllUsersById(id);
+        return user;
+    }
 }

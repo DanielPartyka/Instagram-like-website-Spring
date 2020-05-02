@@ -24,4 +24,7 @@ public class SectionsServices {
         sectionsRepository.getAllSections().forEach(sections::add);
         return sections;
     }
+    public String findSectionName(long id) {
+        return sectionsRepository.findSectionName(id);
+    }
 }

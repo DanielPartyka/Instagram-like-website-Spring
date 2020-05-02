@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="https://cdn.jsdelivr.net/npm/bulma@0.8.1/bulma.sass">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/js/getrequest.js"></script>
+
+    <style>
+        .box {
+            min-height: 600px;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,6 +44,15 @@
                         <a class="navbar-item" th:href="@{/add_photo}">
                             Dodaj Zdjęcie
                         </a>
+                        <a class="navbar-item" th:href="@{/sections}">
+                            Sekcje
+                        </a>
+                        <th:block th:each="cuser :${current_user}">
+                            <a class="navbar-item" th:href="@{'/' + ${cuser.nickname}}"
+                               sec:authorize="isAuthenticated()">
+                                Mój profil
+                            </a>
+                        </th:block>
                     </div>
                 </div>
             </div>
@@ -79,53 +92,34 @@
 <section>
     <div class="container">
         <div class="box">
-            <div class="columns">
-                <div class="tile">
-                    <article class="tile notification is-primary has-text-centered">
-                        <p class="title" th:text="${'Sekcja: ' + section_name}" ></p>
-                    </article>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column" th:each="p:${photo}">
-                    <a th:href="@{'/photo/' + ${p.photo_id}}">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img th:src="@{'/uploads/' + ${p.source}}"
-                                         alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-48x48">
-                                            <img src="https://bulma.io/images/placeholders/96x96.png"
-                                                 alt="Placeholder image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-4" th:text="${p.name_photo}"></p>
-                                        <p class="subtitle is-6" th:text="${'@' + p.nickname}"></p>
-                                    </div>
-                                </div>
-
-                                <div class="content">
-                                    <p th:text="${p.description}"></p>
-                                    <p th:text="${p.date}"></p>
-                                    <b th:text="${p.tags}"></b>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <h2 class="title is-2">Obserwowane osoby</h2>
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th><abbr title="Nickname">Nickname</abbr></th>
+                    <th><abbr title="Imię">Imię</abbr></th>
+                    <th><abbr title="Nazwisko">Nazwisko</abbr></th>
+                    <th><abbr title="Description">Opis</abbr></th>
+                    <th><abbr title="Akcja">Przejdź do profilu</abbr></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="u : ${users}">
+                    <td th:text="${u.nickname}"></td>
+                    <td th:text="${u.name}"></td>
+                    <td th:text="${u.surname}"></td>
+                    <td th:text="${u.description}"></td>
+                    <td><a th:href="@{'/' + ${u.nickname}}">
+                        <button class="button is-primary">Przejdź do profilu</button>
+                    </a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
     </div>
 </section>
 <section>
-    <footer class="footer" style="margin-top:350px;">
+    <footer class="footer">
         <div class="content has-text-centered">
             <p>
                 <strong>Website created</strong> by <a href="https://jgthms.com">Daniel Partyka</a>
