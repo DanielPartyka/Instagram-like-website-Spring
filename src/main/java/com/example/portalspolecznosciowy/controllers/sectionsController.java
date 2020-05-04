@@ -6,6 +6,8 @@ import com.example.portalspolecznosciowy.services.PhotosServices;
 import com.example.portalspolecznosciowy.services.SectionsServices;
 import com.example.portalspolecznosciowy.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +39,9 @@ public class sectionsController {
     public ModelAndView generatesections() {
         ModelAndView modelAndView = new ModelAndView("sections");
         modelAndView.addObject("sections",sectionsServices.allSections());
-        modelAndView.addObject("users",userServices.wszyscyUzytkownicy());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userr = authentication.getName();
+        modelAndView.addObject("users",userServices.proponowaniUzytkownicy(userr));
         return  modelAndView;
     }
     @GetMapping("/sections/{section_id}")

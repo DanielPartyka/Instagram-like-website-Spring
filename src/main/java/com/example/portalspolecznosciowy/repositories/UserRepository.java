@@ -48,4 +48,7 @@ public interface UserRepository extends CrudRepository<User,Long> {
 
     @Query(value = "Select * from user where id=?1", nativeQuery = true)
     User getAllUsersById(long id);
+
+    @Query(value = "Select u.id,u.email,u.name,u.nickname,u.password,u.surname,u.image_src,u.description,u.sex,u.role from user u, photos p where u.id = p.user_id and p.photo_id = ?1", nativeQuery = true)
+    User getUserDetailsByPhotoId(long photo_id);
 }

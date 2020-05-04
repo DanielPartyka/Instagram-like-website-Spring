@@ -47,7 +47,7 @@ public class photoaddingController {
         if (result.hasErrors()) {
             System.out.println("Jest problem z " + result);
         }
-        ModelAndView modelAndView = new ModelAndView("/user");
+        ModelAndView modelAndView = new ModelAndView("/");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         user = authentication.getName();
         photos.setUser(userServices.findUserId(user));

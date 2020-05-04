@@ -3,6 +3,7 @@ package com.example.portalspolecznosciowy.controllers;
 import com.example.portalspolecznosciowy.helpingClasses.HelpingClass2;
 import com.example.portalspolecznosciowy.models.Comments;
 import com.example.portalspolecznosciowy.models.Photos;
+import com.example.portalspolecznosciowy.models.User;
 import com.example.portalspolecznosciowy.repositories.CommentsRepository;
 import com.example.portalspolecznosciowy.services.CommentsServices;
 import com.example.portalspolecznosciowy.services.PhotosServices;
@@ -40,11 +41,14 @@ public class photoController {
     {
         ModelAndView modelAndView = new ModelAndView("photo");
         Photos photos = photosServices.findPhotoDetails(id);
+        User userinfo = userServices.getUserDetailsByPhotoId(photos.getPhoto_id());
         List<Comments> comments = commentsServices.getPhotoDetailById(id);
         List<HelpingClass2> helpingClass2 = new ArrayList<>();
         for (Comments c : comments) {
             helpingClass2.add(new HelpingClass2(commentsServices.getUserNicknameById(c.getComment_id()),c.getDescription(),c.getDate()));
         }
+        modelAndView.addObject("current_user",userServices.findUserId(userr));
+        modelAndView.addObject("userinfo",userinfo);
         modelAndView.addObject("userdetails",helpingClass2);
         modelAndView.addObject("photodetails",photos);
         return modelAndView;

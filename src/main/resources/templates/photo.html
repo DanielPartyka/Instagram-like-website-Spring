@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="UTF-8"/>
     <title></title>
@@ -9,13 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="https://cdn.jsdelivr.net/npm/bulma@0.8.1/bulma.sass">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     <style>
         .box {
             min-height: 600px;
         }
-
-        .box > .column {
+        .box > column {
             margin-top: 130px;
         }
     </style>
@@ -25,8 +22,8 @@
 <section class="section">
     <nav class="navbar is-transparent">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png"
+            <a class="navbar-item" th:href="@{/}">
+                <img src="https://cdn.clipart.email/e982e7d7d6cfc45bcf1d4280320d1b86_instagram-logo-png-e-vetor-download-de-logo_3500-993.png"
                      alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
             </a>
             <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
@@ -38,36 +35,27 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="https://bulma.io/">
+                <a class="navbar-item" th:href="@{/}">
                     Home
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+                    <a class="navbar-link">
                         Opcje
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                            Overview
+                        <a class="navbar-item" th:href="@{/add_photo}">
+                            Dodaj Zdjęcie
                         </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                            Modifiers
+                        <a class="navbar-item" th:href="@{/sections}">
+                            Sekcje
                         </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                            Columns
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                            Layout
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                            Form
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                            Elements
-                        </a>
-                        <a class="navbar-item is-active"
-                           href="https://bulma.io/documentation/components/breadcrumb/">
-                            Components
+                        <th:block th:each="cuser :${current_user}">
+                            <a class="navbar-item" th:href="@{'/' + ${cuser.nickname}}" sec:authorize="isAuthenticated()">
+                                Mój profil
+                            </a>
+                        </th:block>
+                        <a class="navbar-item" th:href="@{/list_of_followers}" sec:authorize="isAuthenticated()">
+                            Lista obserwowanych
                         </a>
                     </div>
                 </div>
@@ -120,6 +108,9 @@
                             <div class="columns">
                                 <div class="column">
                                     <h2 class="title is-2" th:text="${itr.name_photo}"></h2>
+                                    <th:block th:each="u : ${userinfo}">
+                                    <h6 class="title is-6" th:text="@{'Made by: ' + ${u.nickname} + ' ' + '(' + ${u.name} + ' ' + ${u.surname} + ')'}"></h6>
+                                    </th:block>
                                 </div>
                             </div>
                             <div class="columns">
@@ -128,17 +119,12 @@
                                         <article class="media">
                                             <figure class="media-left">
                                                 <p class="image is-64x64">
-                                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                                    <a th:href="@{'/' + ${itr.nickname}}"><img src="https://icons.iconarchive.com/icons/mahm0udwally/all-flat/128/User-icon.png"></a>
                                                 </p>
                                             </figure>
                                             <div class="media-content">
                                                 <div class="content">
-                                                    <p>
-                                                        <!--
-                                                        <th:block th:each="user: ${userdetails}">
-                                                       </th:block>
-                                                        -->
-                                                        <strong th:text="${itr.nickname}"></strong>
+                                                    <p><strong th:text="${itr.nickname}"></strong>
                                                         <br th:text="${itr.description}">
                                                         <br>
                                                         <a>Like</a> · <a>Reply</a>
@@ -152,7 +138,7 @@
                                     <article class="media" style="margin-bottom: 0px;">
                                         <figure class="media-left">
                                             <p class="image is-64x64">
-                                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                                                <img src="https://icons.iconarchive.com/icons/mahm0udwally/all-flat/128/User-icon.png">
                                             </p>
                                         </figure>
                                         <div class="media-content">
@@ -167,8 +153,7 @@
                                             </div>
                                             <div class="field">
                                                 <p class="control">
-                                                    <button class="button" type="submit" form="commentform">Post
-                                                        comment
+                                                    <button class="button" type="submit" form="commentform">Dodaj Komentarz
                                                     </button>
                                                 </p>
                                             </div>

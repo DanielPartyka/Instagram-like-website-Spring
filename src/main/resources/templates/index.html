@@ -14,8 +14,8 @@
 <section class="section">
     <nav class="navbar is-transparent">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png"
+            <a class="navbar-item" th:href="@{/}">
+                <img src="https://cdn.clipart.email/e982e7d7d6cfc45bcf1d4280320d1b86_instagram-logo-png-e-vetor-download-de-logo_3500-993.png"
                      alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
             </a>
             <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
@@ -46,6 +46,9 @@
                             Mój profil
                         </a>
                         </th:block>
+                        <a class="navbar-item" th:href="@{/list_of_followers}" sec:authorize="isAuthenticated()">
+                            Lista obserwowanych
+                        </a>
                     </div>
                 </div>
             </div>
@@ -106,7 +109,7 @@
                             <article class="media" th:each=" u : ${users}">
                                 <figure class="media-left">
                                     <p class="image is-64x64">
-                                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                                        <img src="https://icons.iconarchive.com/icons/mahm0udwally/all-flat/128/User-icon.png">
                                     </p>
                                 </figure>
                                 <div class="media-content">
@@ -232,7 +235,8 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>Website created</strong> by <a href="https://jgthms.com">Daniel Partyka</a>
+                <strong>Website created</strong> by <a>Daniel Partyka</a>
+                <strong>Inspired</strong> by <a href="https://www.instagram.com/">Instagram</a>
             </p>
         </div>
     </footer>

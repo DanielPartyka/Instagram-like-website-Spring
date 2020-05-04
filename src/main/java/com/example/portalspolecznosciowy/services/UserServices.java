@@ -59,4 +59,8 @@ public class UserServices {
         User user = userRepository.getAllUsersById(id);
         return user;
     }
+    public User getUserDetailsByPhotoId(long id) {
+        User user = userRepository.getUserDetailsByPhotoId(id);
+        return user;
+    }
 }
