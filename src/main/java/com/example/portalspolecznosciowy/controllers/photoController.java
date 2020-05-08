@@ -55,7 +55,7 @@ public class photoController {
     }
     @PostMapping("/photo/{id}")
     public ModelAndView addcomment(@PathVariable("id") String id, @ModelAttribute("comments") Comments comments) {
-        ModelAndView modelAndView  = new ModelAndView("index");
+        ModelAndView modelAndView  = new ModelAndView("redirect:/");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userr = authentication.getName();
         comments.setUser(userServices.findUserId(userr));
