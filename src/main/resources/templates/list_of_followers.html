@@ -12,6 +12,10 @@
         .box {
             min-height: 600px;
         }
+        .btn_profile:hover {
+            color: black;
+            background: aqua;
+        }
     </style>
 </head>
 
@@ -47,7 +51,8 @@
                             Sekcje
                         </a>
                         <th:block th:each="cuser :${current_user}">
-                            <a class="navbar-item" th:href="@{'/' + ${cuser.nickname}}" sec:authorize="isAuthenticated()">
+                            <a class="navbar-item" th:href="@{'/' + ${cuser.nickname}}"
+                               sec:authorize="isAuthenticated()">
                                 Mój profil
                             </a>
                         </th:block>
@@ -94,24 +99,36 @@
     <div class="container">
         <div class="box">
             <h2 class="title is-2">Obserwowane osoby</h2>
-            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <table class="table is-striped is-narrow is-hoverable is-fullwidth">
                 <thead>
                 <tr>
-                    <th><abbr title="Nickname">Nickname</abbr></th>
-                    <th><abbr title="Imię">Imię</abbr></th>
-                    <th><abbr title="Nazwisko">Nazwisko</abbr></th>
-                    <th><abbr title="Description">Opis</abbr></th>
-                    <th><abbr title="Akcja">Przejdź do profilu</abbr></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Zdjęcie</b></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Nickname</b></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Imię</b></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Nazwisko</b></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Opis</b></th>
+                    <th style="
+                     background-color: #4CAF50; color:white"><b>Przejdź do profilu</b></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="u : ${users}">
+                    <td>
+                        <figure class="image is-64x64">
+                            <img class="is-rounded" src="https://icons.iconarchive.com/icons/mahm0udwally/all-flat/128/User-icon.png">
+                        </figure>
+                    </td>
                     <td th:text="${u.nickname}"></td>
                     <td th:text="${u.name}"></td>
                     <td th:text="${u.surname}"></td>
                     <td th:text="${u.description}"></td>
                     <td><a th:href="@{'/' + ${u.nickname}}">
-                        <button class="button is-primary">Przejdź do profilu</button>
+                        <button class="button btn_profile is-rounded is-primary"><i class="far fa-user"></i>&nbsp;Przejdź do profilu</button>
                     </a></td>
                 </tr>
                 </tbody>
